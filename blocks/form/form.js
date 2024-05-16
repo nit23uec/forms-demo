@@ -432,7 +432,7 @@ function extractFormDefinition(block) {
   const codeEl = container?.querySelector('code');
   const content = codeEl?.textContent;
   if (content) {
-    formDef = JSON.parse(cleanUp(content));
+    formDef = JSON.parse(content);
   }
   return { container, formDef };
 }

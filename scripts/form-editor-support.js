@@ -150,7 +150,7 @@ async function applyChanges(event) {
         const codeEl = newContainer?.querySelector('code');
         const jsonContent = codeEl?.textContent;
         if (jsonContent) {
-          const formDef = JSON.parse(cleanUp(jsonContent));
+          const formDef = JSON.parse(jsonContent);
           const parent = element.closest('.panel-wrapper') || element.closest('form') || element.querySelector('form');
           const parentDef = getFieldById(formDef, parent.dataset.id, {});
           parent.replaceChildren();
