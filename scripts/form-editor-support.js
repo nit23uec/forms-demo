@@ -144,10 +144,9 @@ async function applyChanges(event) {
     const block = element.parentElement?.closest('.block[data-aue-resource]') || element?.closest('.block[data-aue-resource]');
     if (block) {
       const blockResource = block.getAttribute('data-aue-resource');
-      //const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
-      const formBlocks = parsedUpdate.querySelectorAll(`[data-aue-model="form"]`);
-      formBlocks.forEach(async (formBlock) => {
-        const newContainer = formBlock.querySelector('pre');
+      const newBlock = parsedUpdate.querySelector(`[data-aue-resource="${blockResource}"]`);
+      if (block.dataset.aueModel === 'form') {
+        const newContainer = newBlock.querySelector('pre');
         const codeEl = newContainer?.querySelector('code');
         const jsonContent = codeEl?.textContent;
         if (jsonContent) {
@@ -160,7 +159,7 @@ async function applyChanges(event) {
           return true;
         }
         return false;
-      });
+      }
     }
   }
   return true;
