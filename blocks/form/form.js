@@ -432,7 +432,7 @@ function extractFormDefinition(block) {
   const codeEl = container?.querySelector('code');
   const content = codeEl?.textContent;
   if (content) {
-    formDef = JSON.parse(content);
+    formDef = JSON.parse(cleanUp(content));
   }
   return { container, formDef };
 }
@@ -464,7 +464,7 @@ export async function fetchForm(pathname) {
 }
 
 export default async function decorate(block) {
-  let container;
+  let container = block.querySelector('a[href]');
   let formDef;
   let pathname;
   if (container) {
